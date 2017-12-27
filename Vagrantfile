@@ -18,18 +18,10 @@ Vagrant.configure("2") do |config|
     config.vm.define "node#{i}" do |node|
       node.vm.hostname = "node#{i}"
       node.vm.network :private_network, ip: "192.168.33.1#{i}", virtualbox__intnet: "intnet"
-      config.vm.provision "shell", inline: <<-SHELL
-        
-        curl -s https://packagecloud.io/install/repositories/basho/riak/script.deb.sh | sudo bash
-        apt-get install riak=2.2.3-1
-        cd /etc/riak
-        sudo sed -i "/listener/d" riak.conf
-        echo 'listener.http.internal = 0.0.0.0:8098' >> riak.conf
-        echo 'listener.protobuf.internal = 0.0.0.0:8087' >> riak.conf
-        echo "nodename = riak@192.168.33.1" >> riak.conf
-        echo 'storage_backend = leveldb' >> riak.conf
-        riak start
-      SHELL
+      config.vm.provision "shell" do |s|
+        s.path = "setup.sh"
+        s.args = ["#{i}"]
+      end
     end
   end
 
