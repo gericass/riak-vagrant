@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "node#{i}" do |node|
       node.vm.hostname = "node#{i}"
       node.vm.network :private_network, ip: "192.168.33.1#{i}", virtualbox__intnet: "intnet"
-      config.vm.provision "shell" do |s|
+      node.vm.provision "shell" do |s|
         s.path = "setup.sh"
         s.args = ["#{i}"]
       end
