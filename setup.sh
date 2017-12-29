@@ -16,3 +16,4 @@ sudo apt-get -y install golang-1.9-go
 sudo mkdir /home/vagrant/go
 sudo echo "GOPATH=/home/vagrant/go" >> ~/.bashrc
 sudo echo "PATH=$PATH:/usr/lib/go-1.9/bin:$GOPATH" >> ~/.bashrc
+source ~/.bashrc
