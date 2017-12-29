@@ -10,3 +10,9 @@ echo "nodename = riak@192.168.33.1$1" >> riak.conf
 echo 'storage_backend = leveldb' >> riak.conf
 rm -fr /var/lib/riak/ring/
 riak start
+sudo add-apt-repository ppa:gophers/archive
+sudo apt update
+sudo apt-get install golang-1.9-go
+sudo mkdir /home/vagrant/go
+sudo echo "GOPATH=/home/vagrant/go" >> ~/.bashrc
+sudo echo "PATH=$PATH:/usr/lib/go-1.9/bin:$GOPATH" >> ~/.bashrc
