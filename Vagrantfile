@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu16.04"
 
-  (1..3).each do |i|
+  (1..5).each do |i|
     config.vm.define "node#{i}" do |node|
       node.vm.hostname = "node#{i}"
       node.vm.network :private_network, ip: "192.168.33.1#{i}", virtualbox__intnet: "intnet"
