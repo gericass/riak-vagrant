@@ -1,6 +1,6 @@
 # riak-vagrant
 
-Start up 3 virtual machines that set up riak and create a cluster
+Start up 5 virtual machines that set up riak and create a cluster
 
 ## Requirements
 
@@ -14,6 +14,9 @@ Start up 3 virtual machines that set up riak and create a cluster
 
 ## Create a cluster
 
-1. `for node in node{2,3}; do; vagrant ssh $node -c "sudo riak-admin cluster join riak@192.168.33.11"; done;`
+1. `for node in node{2,3,4,5}; do; vagrant ssh $node -c "sudo riak-admin cluster join riak@192.168.33.11"; done;`
 2. `vagrant ssh node1 -c "sudo riak-admin cluster plan && sudo riak-admin cluster commit"`
 
+## setting
+
+- node2 port forwaded host: 10000, guest:8098
